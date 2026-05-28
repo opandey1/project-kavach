@@ -12,11 +12,11 @@ This directory contains the reproducible Docker environment for Workstream B of 
 1. Navigate to the environment directory:
 ```bash
    cd webapp/env
-
+````
 2. Initialize the containers in detached mode:
 ```bash
 docker compose up -d
-
+````
 ## Verification & Initial Setup
 
 OWASP Juice Shop:
@@ -35,3 +35,4 @@ Log in using the default administrator credentials (admin / password).
 To stop the environment and securely destroy the associated containers and networks, execute:
 ```bash
 docker compose down -v
+````
