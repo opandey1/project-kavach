@@ -1,0 +1,12 @@
+services:
+  dvwa:
+    image: vulnerables/web-dvwa@sha256:dae203fe11646a86937bf04db0079adef295f426da68a92b40e3b181f337daa7
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+  
+  juiceshop:
+    image: bkimminich/juice-shop@sha256:350cf9a6ea37138b987a3968d046e61bcd3bb18d2ec95290cfc6901bd6013826
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
