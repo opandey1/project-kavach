@@ -1,12 +1,41 @@
+# Project KAVACH — Workstream B Test Environment
+#
+# Spins up DVWA + OWASP Juice Shop locally for vulnerability testing.
+# Both apps are INTENTIONALLY VULNERABLE — do not expose beyond localhost.
+# Compose v2 syntax (no `version:` key); requires Docker Engine >= 20.10.13
+# and the Compose plugin v2.x.
+
 services:
   dvwa:
+    # Image note: `vulnerables/web-dvwa` was last updated in 2019 and is
+    # effectively frozen. The digest pin below preserves reproducibility.
+    # If a more current PHP stack is needed later, `digininja/dvwa` is the
+    # official maintained alternative from the DVWA project.
     image: vulnerables/web-dvwa@sha256:dae203fe11646a86937bf04db0079adef295f426da68a92b40e3b181f337daa7
+    container_name: kavach-dvwa
     ports:
       - "8080:80"
     restart: unless-stopped
-  
+    # The base Ubuntu image ships with wget; we use --spider to issue a HEAD
+    # against the login page (which is always reachable once Apache is up).
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost/login.php || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
   juiceshop:
     image: bkimminich/juice-shop@sha256:350cf9a6ea37138b987a3968d046e61bcd3bb18d2ec95290cfc6901bd6013826
+    container_name: kavach-juiceshop
     ports:
       - "3000:3000"
     restart: unless-stopped
+    # The Juice Shop base image is node-slim and does not include wget/curl;
+    # we use node itself (guaranteed present) for the healthcheck.
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3000', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
