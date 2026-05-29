@@ -32,7 +32,7 @@ Confirm both containers are running and healthy:
 docker compose ps
 ```
 
-Expected: two services (`kavach-dvwa`, `kavach-juiceshop`) with `STATUS` ending in `(healthy)` after roughly 30–60 seconds. If status remains `(starting)` for several minutes, see Troubleshooting below.
+Expected: kavach-juiceshop shows (healthy) after ~60s; kavach-dvwa shows Up without a health state (healthcheck intentionally omitted — see comment in the Compose file). Both should be reachable in a browser.
 
 ## Verify Image Digests
 
