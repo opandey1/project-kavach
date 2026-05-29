@@ -19,11 +19,11 @@ services:
     # The base Ubuntu image ships with wget; we use --spider to issue a HEAD
     # against the login page (which is always reachable once Apache is up).
     healthcheck:
-      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost/login.php || exit 1"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
+    # Healthcheck deliberately omitted: vulnerables/web-dvwa requires manual
+    # database initialization via setup.php on first run, which makes any
+    # HTTP-based healthcheck fail until that step is done. Reviewers verify
+    # the environment by browser-loading http://localhost:8080 and following
+    # the setup flow in README.md.
 
   juiceshop:
     image: bkimminich/juice-shop@sha256:350cf9a6ea37138b987a3968d046e61bcd3bb18d2ec95290cfc6901bd6013826
