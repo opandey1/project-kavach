@@ -1,0 +1,4 @@
+# Workstream A — captured artefacts (large, licence-restricted, fetched via script)
+network/*.zip
+network/*.pcap
+network/alerts/
