@@ -148,20 +148,20 @@ Iterations are scoped by **exit condition**, not by absolute date. Solo executio
 
 | # | Theme | Goal | Exit Condition | Status |
 |---|---|---|---|---|
-| 1 | Frame | Charter, environments, PCAP selected, threat model v0 | Both environments reproducible in <15 min from a clean clone | `IN PROGRESS` |
-| 2 | Network | Workstream A through A.4 (IOC list); architecture in draft | Analysis re-runnable from the notebooks alone, arriving at the same indicators | `PENDING` |
+| 1 | Frame | Charter, environments, PCAP selected, threat model v0 | Both environments reproducible in <15 min from a clean clone | `CLOSED` |
+| 2 | Network | Workstream A through A.4 (IOC list); architecture in draft | Analysis re-runnable from the notebooks alone, arriving at the same indicators | `IN PROGRESS` |
 | 3 | Web | Workstream B through B.4; SAST baselines captured | All required vulnerability categories demonstrated with reproducible payloads | `PENDING` |
 | 4 | Synthesise | Workstream C complete; pack frozen; executive readout dry-run | Deliverable pack independently reviewable; retrospective held | `PENDING` |
 
 ### Current Iteration: Frame
 
-- [ ] GitHub repository created with directory scaffolding
-- [ ] Branch protection on `main`; Project board live with seeded Issues
-- [ ] DVWA + OWASP Juice Shop reproducible in <15 minutes from a clean clone
-- [ ] Source PCAP selected and justified (`network/pcap-selection.md`)
-- [ ] Threat model v0 sketched (`synthesis/threat-model.md`)
-- [ ] README charter finalised for Iteration 1 exit
-- [ ] Iteration 1 retrospective written
+- [x] GitHub repository created with directory scaffolding
+- [x] Branch protection on `main`; Project board live with seeded Issues
+- [x] DVWA + OWASP Juice Shop reproducible in <15 minutes from a clean clone
+- [x] Source PCAP selected and justified (`network/pcap-selection.md`)
+- [x] Threat model v0 sketched (`synthesis/threat-model.md`)
+- [x] README charter finalised for Iteration 1 exit
+- [x] Iteration 1 retrospective written
 
 ---
 
